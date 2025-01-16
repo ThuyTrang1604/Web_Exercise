@@ -1,0 +1,24 @@
+body {
+  width: 44%;
+}
+img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+ul {
+  background-color: rgb(158, 162, 36);
+  list-style-type: disc;
+  padding: 12px 0px 12px 50px;
+  font-weight: bold;
+  width: 200px;
+  float: right;
+}
+p.first {
+  margin-bottom: 120px;
+}
+address {
+  text-transform: uppercase;
+  text-align: center;
+}

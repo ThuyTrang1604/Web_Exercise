@@ -1,0 +1,30 @@
+table,
+th,
+td {
+  border: 2px solid;
+}
+thead,
+tfoot {
+  background-color: blue;
+  color: white;
+}
+tbody tr:nth-child(2n) {
+  background-color: pink;
+}
+tbody tr:nth-child(2n + 1) {
+  background-color: whitesmoke;
+}
+tbody tr:hover {
+  cursor: pointer;
+  background-color: yellow;
+}
+/* điều chỉnh kích thước từng cột */
+td:nth-child(1) {
+  width: 60px;
+}
+td:nth-child(2) {
+  width: 160px;
+}
+td:nth-child(3) {
+  width: 280px;
+}
