@@ -1,0 +1,17 @@
+body {
+  background-color: #add8e6;
+}
+h1 {
+  color: red;
+}
+hr {
+  border: 1px solid black;
+}
+div > div {
+  font-weight: bold;
+  margin: 20px 0 20px 10px;
+}
+#enter {
+  margin-left: 10px;
+  width: 500px;
+}

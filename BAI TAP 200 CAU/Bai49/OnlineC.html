@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Online Classifield</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <h1>Online Classifieds Search Form</h1>
+    <hr />
+    <form>
+      <div>
+        <div>1) Search for a classified in the following sections</div>
+        <table>
+          <tr>
+            <td>
+              <input
+                id="employment"
+                type="radio"
+                name="classified"
+                value="employment"
+              />
+              <label for="employment">Employment</label>
+            </td>
+            <td>
+              <input
+                id="personal"
+                type="radio"
+                name="classified"
+                value="personal"
+              />
+              <label for="personal">Personal</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                id="forsale"
+                type="radio"
+                name="classified"
+                value="forsale"
+              />
+              <label for="forsale">For Sale</label>
+            </td>
+            <td>
+              <input
+                id="miscellanecus"
+                type="radio"
+                name="classified"
+                value="miscellanecus"
+              />
+              <label for="miscellanecus">Miscellanecus</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                id="housing"
+                type="radio"
+                name="classified"
+                value="housing"
+              />
+              <label for="housing">Housing</label>
+            </td>
+            <td>
+              <input
+                id="alloftheabove"
+                type="radio"
+                name="classified"
+                value="alloftheabove"
+              />
+              <label for="alloftheabove">All of the above</label>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <div>2) Search the following publications:</div>
+        <table>
+          <tr>
+            <td>
+              <input type="checkbox" id="mt" />
+              <label for="mt">Midwest times</label>
+            </td>
+            <td>
+              <input type="checkbox" name="" id="mn" />
+              <label for="mn">Modern News</label>
+            </td>
+            <td>
+              <input type="checkbox" name="" id="et" />
+              <label for="et">Employment Today</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" id="glc" />
+              <label for="glc">Great Lakes Classifieds</label>
+            </td>
+            <td>
+              <input type="checkbox" name="" id="md" />
+              <label for="md">Middleton Daily</label>
+            </td>
+            <td>
+              <input type="checkbox" name="" id="cdn" />
+              <label for="cdn">Cashtown Daily News</label>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <div>
+          <label for="ft">3) From </label>
+          <input type="text" name="" id="ft" value="mm/dd/yy" />
+          <label for="to">to</label>
+          <input type="text" name="" id="to" value="mm/dd/yy" />
+        </div>
+      </div>
+      <div>
+        <div>
+          <label for="enter">
+            4) Enter a few keywords to describe the classified
+          </label>
+        </div>
+        <input type="text" name="" id="enter" />
+      </div>
+      <div>
+        <div>5) Click one of the options below:</div>
+        <a href="" onclick="javascript:alert('Successful')">
+          <img src="Hinh/Search.gif" alt="" />
+        </a>
+        <a href="help.html" target="_blank">
+          <img src="Hinh/Help.gif" alt="" />
+        </a>
+        <input type="image" name="" id="" src="Hinh/Cancel.gif" />
+      </div>
+    </form>
+  </body>
+</html>
