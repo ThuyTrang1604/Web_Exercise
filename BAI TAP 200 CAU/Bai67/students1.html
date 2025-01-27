@@ -1,0 +1,207 @@
+<html>
+  <head>
+    <title>Tiêu đề trang</title>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+      #header,
+      #mytable td {
+        cursor: pointer;
+      }
+    </style>
+    <script type="text/javascript">
+      var dataset = "<sinhviens>";
+      dataset += "<sinhvien>";
+      dataset += "<mssv>K123456789</mssv>";
+      dataset += "<hoTen>Quách Thị Bán Bún Bò</hoTen>";
+      dataset += "<ngaySinh>7/7/1997</ngaySinh>";
+      dataset += "<gioiTinh>Nữ</gioiTinh>";
+      dataset += "</sinhvien>";
+      dataset += "<sinhvien>";
+      dataset += "<mssv>K12345000</mssv>";
+      dataset += "<hoTen>Hồng Lâu Mộng</hoTen>";
+      dataset += "<ngaySinh>2/2/1992</ngaySinh>";
+      dataset += "<gioiTinh>Nam</gioiTinh>";
+      dataset += "</sinhvien>";
+      dataset += "<sinhvien>";
+      dataset += "<mssv>K1674000</mssv>";
+      dataset += "<hoTen>Hồ Văn Đồ</hoTen>";
+      dataset += "<ngaySinh>2/7/1997</ngaySinh>";
+      dataset += "<gioiTinh>Nam</gioiTinh>";
+      dataset += "</sinhvien>";
+      dataset += "</sinhviens>";
+    </script>
+    <script type="text/javascript">
+      // Onmouse over function
+      function changeBackgroundOver(obj) {
+        obj.style.backgroundColor = "yellow";
+      }
+      function changeBackgroundOut(obj) {
+        obj.style.backgroundColor = "white";
+      }
+
+      // sort function
+      function sortTable(n) {
+        var table, rows, switching;
+        i, x, y, shouldSwitch, dir, (switchcount = 0);
+        table = document.getElementById("mytable");
+        switching = true;
+        dir = "asc";
+        while (switching) {
+          switching = false;
+          rows = table.rows;
+          for (i = 2; i <= rows.length - 2; i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            if (dir == "asc") {
+              if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                shouldSwitch = true;
+                break;
+              }
+            } else if (dir == "desc") {
+              if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                shouldSwitch = true;
+                break;
+              }
+            }
+          }
+          if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount++;
+          } else {
+            if (switchcount == 0 && dir == "asc") {
+              dir = "desc";
+              switching = true;
+            }
+          }
+        }
+      }
+
+      //Show detail page function
+      function showDetails(obj) {
+        // Lấy thông tin từ hàng đang được click
+        var mssv = obj.cells[0].innerHTML;
+        var hoTen = obj.cells[1].innerHTML;
+        var ngaySinh = obj.cells[2].innerHTML;
+        var gioiTinh = obj.cells[3].innerHTML;
+
+        // Xây dựng URL với các tham số chi tiết
+        var detailURL =
+          "detail.html?id=" +
+          encodeURIComponent(mssv) +
+          "&hoTen=" +
+          encodeURIComponent(hoTen) +
+          "&ngaySinh=" +
+          encodeURIComponent(ngaySinh) +
+          "&gioiTinh=" +
+          encodeURIComponent(gioiTinh);
+
+        // Mở trang Chi tiết trong một cửa sổ mới
+        window.open(detailURL);
+        // // Mở trang Chi tiết trong một cửa sổ mới
+        // window.location.href =
+        //   "detail.html?id=" +
+        //   id +
+        //   "&name=" +
+        //   name +
+        //   "&birthday=" +
+        //   birthday +
+        //   "&gender=" +
+        //   gender;
+      }
+    </script>
+  </head>
+  <body>
+    <h3>Danh sách Sinh Viên:</h3>
+    <table border="1" id="mytable" width="400">
+      <thead>
+        <tr>
+          <th colspan="4" style="background-color: yellow">
+            Danh sách Sinh viên
+          </th>
+        </tr>
+        <tr id="header" style="background-color: green; color: white">
+          <th onclick="sortTable(0)">Mã Sinh Viên</th>
+          <th onclick="sortTable(1)">Họ Tên</th>
+          <th onclick="sortTable(2)">Ngày Sinh</th>
+          <th onclick="sortTable(3)">Giới Tính</th>
+        </tr>
+      </thead>
+
+      <tbody id="tbodysinhvien"></tbody>
+    </table>
+    <div id="detailPage" style="display: none">
+      <table id="detailTable" border="1px" width="250">
+        <tr>
+          <th bgcolor="pink" colspan="2">Thông tin sinh viên</th>
+        </tr>
+        <tr>
+          <td>MSSV</td>
+          <td id="tdmssv"></td>
+        </tr>
+        <tr>
+          <td>Họ tên</td>
+          <td id="tdhoten"></td>
+        </tr>
+        <tr>
+          <td>Ngày sinh</td>
+          <td id="tdngaysinh"></td>
+        </tr>
+        <tr>
+          <td>Giới tính</td>
+          <td id="tdgioitinh"></td>
+        </tr>
+      </table>
+    </div>
+
+    <script type="text/javascript">
+      //   function tai_danhsach_sinhvien() {
+      //Bước 1: Nạp mô hình XML DOM
+      var parser = new DOMParser();
+      var xmlDoc = parser.parseFromString(dataset, "text/xml");
+      tbodysinhvien = document.getElementById("tbodysinhvien");
+
+      xmlLength = xmlDoc.getElementsByTagName("id").length;
+      for (i = 0; i <= xmlLength; i++) {
+        // insert mssv
+        tr = document.createElement("tr");
+        tdmssv = document.createElement("td");
+        mssv = xmlDoc.getElementsByTagName("mssv")[i].childNodes[0].nodeValue;
+        tdmssv.innerHTML = mssv;
+        tr.appendChild(tdmssv);
+
+        // insert name
+        tdhoten = document.createElement("td");
+        hoTen = xmlDoc.getElementsByTagName("hoTen")[i].childNodes[0].nodeValue;
+        tdhoten.innerHTML = hoTen;
+        tr.appendChild(tdhoten);
+        //insert birthday
+        tdngaysinh = document.createElement("td");
+        ngaySinh =
+          xmlDoc.getElementsByTagName("ngaySinh")[i].childNodes[0].nodeValue;
+        tdngaysinh.innerHTML = ngaySinh;
+        tr.appendChild(tdngaysinh);
+        //insert gender
+        tdgioitinh = document.createElement("td");
+        gioiTinh =
+          xmlDoc.getElementsByTagName("gioiTinh")[i].childNodes[0].nodeValue;
+        tdgioitinh.innerHTML = gioiTinh;
+        tr.appendChild(tdgioitinh);
+
+        tr.onmouseover = function () {
+          changeBackgroundOver(this);
+        };
+        tr.onmouseout = function () {
+          changeBackgroundOut(this);
+        };
+        tr.onclick = function () {
+          showDetails(this);
+        };
+        tbodysinhvien.appendChild(tr);
+      }
+    </script>
+  </body>
+</html>
