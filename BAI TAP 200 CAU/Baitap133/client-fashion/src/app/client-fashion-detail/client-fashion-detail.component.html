@@ -1,0 +1,18 @@
+<h3 class="text-center bg-primary text-white p-3 text-uppercase">
+  {{ fashion.fashion_subject }}
+</h3>
+<hr />
+<div
+  [innerHTML]="fashion.fashion_detail | ckeditorFormat"
+  class="text-center fs-5 fst-italic"
+></div>
+<hr />
+<div class="d-flex justify-content-center">
+  <div class="ml-60">
+    <img
+      src="{{ fashion.fashion_image }}"
+      alt="fashion image"
+      style="object-fit: cover; max-height: 500px"
+    />
+  </div>
+</div>
